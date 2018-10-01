@@ -30,15 +30,15 @@ $("#submitButton").on("click", function (event) {
   var trainName = $("#trainName").val().trim();
   var destination = $("#destination").val().trim();
   var frequency = $("#frequency").val().trim();
-  var time = $("#time").val().trim();
-  rate = parseInt(rate);
+  var firstArrival = $("#firstArrival").val().trim();
+  // rate = parseInt(rate);
 
   // Change what is saved in firebase
   database.ref().push({
     trainName: trainName,
     destination: destination,
     frequency: frequency,
-    time: time
+    firstArrival: firstArrival
   });
 
 }); // End of .on click
@@ -47,7 +47,7 @@ $("#submitButton").on("click", function (event) {
 // When changes occurs it will print them to console and html
 database.ref().on("child_added", function (snapshot) {
   console.log("Moment Now:" + moment().format());
-  console.log("Now-then=" + moment().diff(snapshot.val().time, "minutes"));
+  console.log("Now-then=" + moment().diff(snapshot.val().firstArrival, "minutes"));
 
   // Display Data Added]
   $("#databaseDump").append(
@@ -55,8 +55,8 @@ database.ref().on("child_added", function (snapshot) {
     '<td>' + snapshot.val().trainName + '</td>' +
     '<td>' + snapshot.val().destination + '</td>' +
     '<td>' + snapshot.val().frequency + '</td>' +
-    '<td>' + snapshot.val().time + '</td>' +
-    '<td>' + moment().diff(snapshot.val().time, "minutes") + '</td>' +
+    '<td>' + snapshot.val().firstArrival + '</td>' +
+    // '<td>' + moment().diff(snapshot.val().time, "minutes") + '</td>' +
     '</tr>'
   );
 

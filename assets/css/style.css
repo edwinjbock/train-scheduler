@@ -20,3 +20,7 @@ body {
   background-color: lightgray;
   color: black;
 }
+
+th {
+font-display: bold;
+}
