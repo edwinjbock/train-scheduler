@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Reset CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+  <!-- My Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <!-- <script> // Equivalent of jQuery for waiting till page loads
+  document.addEventListener("DOMContentLoaded", function (event) {
+      //do work
+    });
+  </script> -->
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+  <!-- Link to Moment.js should go here -->
+  <script src="assets/javascript/moment.js"></script>
+
+
+  <title>Activity 17-Timesheet</title>
+
+  <!-- Inline CSS Styling -->
+  <style>
+  </style>
+
+</head>
+
+<body>
+  <!-- BEGIN BODY CODE -->
+
+  <!-- Jumbotron Title -->
+  <div class="jumbotron">
+    <h1 class="text-center">Employee Timesheet</h1>
+    <h3 class="text-center">Session 7.3 - Activity 17 - Firebase</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card card-default">
+        <div class="card-body">
+          <h3 class="text-center"></h3>
+          <form>
+            <p>Employee Name:<br>
+              <input type="text" id="name"></p>
+            <p>Role:<br>
+              <input type="text" id="role"></p>
+            <p>Start Date (mm/dd/yyyy):<br>
+              <input type="text" id="startDate"></p>
+            <p>Monthly Salary:<br>
+              <input type="text" id="rate"></p>
+            <p><input type="submit" value="Submit" id="submitButton"></p>
+          </form>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table id="databaseDump" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Monthly Rate</th>
+        <th scope="col">Months Worked</th>
+        <th scope="col">Total Bill</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+    <!-- Data should display here -->
+  </table>
+
+
+
+
+  <!-- END OF BODY CODE -->
+
+  <!-- ********** SCRIPTS ********** -->
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+  <!-- Bootstrap: jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap: Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap: Javascript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <!-- MY JAVASCRIPT -->
+  <script type="text/javascript" src="assets/javascript/script.js"></script>
+
+</body>
+
+</html>
