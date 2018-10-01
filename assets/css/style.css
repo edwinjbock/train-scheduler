@@ -3,42 +3,20 @@
 }
 
 body {
-  
+
 }
 
-
-
-
-
-/* ******** MEDIA QUERIES ******** */
-@media screen and (max-width: 980px) {
-  .container {
-    max-width: 980px;
-  }
+.jumbotron {
+  background-color: #2a2a57;
+  color: white;
+  margin: 10px 0px 5px 0px;
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
+.card {
+    margin: 5px 0 5px 0;
 }
 
-@media screen and (max-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-
-  nav {
-    float: left; 
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .container {
-    max-width: 320px;
-  }
-
-  nav {
-    float: left; 
-  }
+.card-header {
+  background-color: lightgray;
+  color: black;
 }

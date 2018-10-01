@@ -9,12 +9,12 @@
 // Make sure to match the configuration to the script version number in the HTML
 // (Ex. 3.0 != 3.7.0)
 var config = {
-  apiKey: "AIzaSyDFqYOlltkXjtEb1lRMa26hc7po_f4NAOE",
-  authDomain: "time-sheet-276ad.firebaseapp.com",
-  databaseURL: "https://time-sheet-276ad.firebaseio.com",
-  projectId: "time-sheet-276ad",
-  storageBucket: "time-sheet-276ad.appspot.com",
-  messagingSenderId: "518798022156"
+  apiKey: "AIzaSyDsNqjkN1y0BrzuNTiR72CXXh4HlfKQ-Gk",
+  authDomain: "train-scheduler-7ff53.firebaseapp.com",
+  databaseURL: "https://train-scheduler-7ff53.firebaseio.com",
+  projectId: "train-scheduler-7ff53",
+  storageBucket: "train-scheduler-7ff53.appspot.com",
+  messagingSenderId: "182214102587"
 };
 
 firebase.initializeApp(config);
@@ -27,20 +27,18 @@ $("#submitButton").on("click", function (event) {
   event.preventDefault();
 
   // Get the input values
-  var name = $("#name").val().trim();
-  var role = $("#role").val().trim();
-  var startDate = $("#startDate").val().trim();
-  var rate = $("#rate").val().trim();
+  var trainName = $("#trainName").val().trim();
+  var destination = $("#destination").val().trim();
+  var frequency = $("#frequency").val().trim();
+  var time = $("#time").val().trim();
   rate = parseInt(rate);
-  var monthsWorked;
-  var totalBill;
 
   // Change what is saved in firebase
   database.ref().push({
-    name: name,
-    role: role,
-    startDate: startDate,
-    rate: rate,
+    trainName: trainName,
+    destination: destination,
+    frequency: frequency,
+    time: time
   });
 
 }); // End of .on click
@@ -49,17 +47,16 @@ $("#submitButton").on("click", function (event) {
 // When changes occurs it will print them to console and html
 database.ref().on("child_added", function (snapshot) {
   console.log("Moment Now:" + moment().format());
-  console.log("Now-then=" + moment().diff(snapshot.val().startDate, "months"));
+  console.log("Now-then=" + moment().diff(snapshot.val().time, "minutes"));
 
   // Display Data Added]
   $("#databaseDump").append(
     '<tr>' +
-    '<td>' + snapshot.val().name + '</td>' +
-    '<td>' + snapshot.val().role + '</td>' +
-    '<td>' + snapshot.val().startDate + '</td>' +
-    '<td>' + snapshot.val().rate + '</td>' +
-    '<td>' + moment().diff(snapshot.val().startDate, "months") + '</td>' +
-    '<td>' + snapshot.val().rate * moment().diff(snapshot.val().startDate, "months") + '</td>' +
+    '<td>' + snapshot.val().trainName + '</td>' +
+    '<td>' + snapshot.val().destination + '</td>' +
+    '<td>' + snapshot.val().frequency + '</td>' +
+    '<td>' + snapshot.val().time + '</td>' +
+    '<td>' + moment().diff(snapshot.val().time, "minutes") + '</td>' +
     '</tr>'
   );
 
