@@ -46,8 +46,30 @@ $("#submitButton").on("click", function (event) {
 // Firebase is always watching for changes to the data.
 // When changes occurs it will print them to console and html
 database.ref().on("child_added", function (snapshot) {
-  console.log("Moment Now:" + moment().format());
-  console.log("Now-then=" + moment().diff(snapshot.val().firstArrival, "minutes"));
+  
+  console.log("********** FIREBASE DATA *************");
+  console.log("trainName:" + snapshot.val().trainName);
+  console.log("destination:" + snapshot.val().destination);
+  console.log("frequency:" + snapshot.val().frequency);
+  console.log("firstArrival:" + snapshot.val().firstArrival);
+
+  console.log("********** CALCULATIONS *************");
+  var trainStartTime = moment(snapshot.val().firstArrival, "HH:mm").subtract(1, "years");
+  var trainFrequency = snapshot.val().frequency;
+  var momentNow = moment().format("HH:mm");
+  var diffStartAndNow = moment().diff(moment(trainStartTime, "HH:mm"));
+  var remainderTime = diffStartAndNow % trainFrequency;
+  var minutesUntilTrain = trainFrequency - remainderTime;
+  var nextTrainArrival = moment().add(minutesUntilTrain, "minutes");
+  var nextTrainArrivalFormatted = moment(nextTrainArrival).format("LT");
+
+  console.log("momentNow: " + momentNow);
+  console.log("trainStartTime: " + trainStartTime);
+  console.log("trainFrequency: " + trainFrequency);
+  console.log("diffStartAndNow: " + diffStartAndNow);
+  console.log("remainderTime: " + remainderTime);
+  console.log("minutesUntilTrain: " + minutesUntilTrain);
+  console.log("nextTrainArrival: " + nextTrainArrivalFormatted);
 
   // Display Data Added]
   $("#databaseDump").append(
@@ -56,7 +78,9 @@ database.ref().on("child_added", function (snapshot) {
     '<td>' + snapshot.val().destination + '</td>' +
     '<td>' + snapshot.val().frequency + '</td>' +
     '<td>' + snapshot.val().firstArrival + '</td>' +
-    // '<td>' + moment().diff(snapshot.val().time, "minutes") + '</td>' +
+    '<td>' + minutesUntilTrain + '</td>' +
+    '<td>' + nextTrainArrivalFormatted + '</td>' +
+    // '<td>' + moment().diff(snapshot.val().firstArrival, "minutes") + '</td>' +
     '</tr>'
   );
 
