@@ -24,3 +24,7 @@ body {
 th {
 font-display: bold;
 }
+
+.inputForm {
+  width: 100%;
+}

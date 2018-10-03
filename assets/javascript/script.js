@@ -1,10 +1,5 @@
 // BEGINNING OF SCRIPT.JS
 
-// ********** GLOBAL DECLARATIONS **********
-// Variables related to the scripting logic
-
-/* global moment firebase */
-
 // Initialize Firebase
 // Make sure to match the configuration to the script version number in the HTML
 // (Ex. 3.0 != 3.7.0)
@@ -80,7 +75,7 @@ database.ref().on("child_added", function (snapshot) {
     '<td>' + snapshot.val().firstArrival + '</td>' +
     '<td>' + minutesUntilTrain + '</td>' +
     '<td>' + nextTrainArrivalFormatted + '</td>' +
-    // '<td>' + moment().diff(snapshot.val().firstArrival, "minutes") + '</td>' +
+    '<td>' + moment() + '</td>' +
     '</tr>'
   );
 
