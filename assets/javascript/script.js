@@ -58,6 +58,7 @@ database.ref().on("child_added", function (snapshot) {
   var nextTrainArrival = moment().add(minutesUntilTrain, "minutes");
   var nextTrainArrivalFormatted = moment(nextTrainArrival).format("LT");
 
+  console.log("trainName:" + snapshot.val().trainName);
   console.log("momentNow: " + momentNow);
   console.log("trainStartTime: " + trainStartTime);
   console.log("trainFrequency: " + trainFrequency);
@@ -75,7 +76,7 @@ database.ref().on("child_added", function (snapshot) {
     '<td>' + snapshot.val().firstArrival + '</td>' +
     '<td>' + minutesUntilTrain + '</td>' +
     '<td>' + nextTrainArrivalFormatted + '</td>' +
-    '<td>' + moment() + '</td>' +
+    // '<td>' + moment() + '</td>' +
     '</tr>'
   );
 
